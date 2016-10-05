@@ -1,115 +1,115 @@
-aggregate.addhost.end
-aggregate.addhost.start
-aggregate.create.end
-aggregate.create.start
-aggregate.delete.end
-aggregate.delete.start
-aggregate.removehost.end
-aggregate.removehost.start
-aggregate.updatemetadata.end
-aggregate.updatemetadata.start
-aggregate.updateprop.end
-aggregate.updateprop.start
-api.fault
-instance.create.end
-instance.create.error
-instance.add_fixed_ip.end
-instance.add_fixed_ip.start
-instance.create.start
-instance.delete.end
-instance.remove_fixed_ip.end
-instance.remove_fixed_ip.start
-instance.delete.start
-instance.evacuate
-instance.exists
-instance.finish_resize.end
-instance.finish_resize.start
-instance.live.migration_abort.start
-instance.live.migration_abort.end
-instance.live_migration_post_dest.end
-instance.live_migration_post_dest.start
-instance.live_migration_post.end
-instance.live_migration_post.start
-instance.live_migration_pre.end
-instance.live_migration_pre.start
-instance.live_migration_rollback_dest.end
-instance.live_migration_rollback_dest.start
-instance.live_migration_rollback.end
-instance.live_migration_rollback.start
-instance.pause.end
-instance.pause.start
-instance.power_off.end
-instance.power_off.start
-instance.power_on.end
-instance.power_on.start
-instance.reboot.end
-instance.reboot.start
-instance.rebuild.end
-instance.rebuild.error
-instance.rebuild.scheduled
-instance.rebuild.start
-instance.rescue.end
-instance.rescue.start
-instance.resize_confirm.end
-instance.resize_confirm.start
-instance.resize.end
-instance.resize.error
-instance.resize_prep.end
-instance.resize_prep.start
-instance.resize_revert.end
-instance.resize_revert.start
-instance.resize.start
-instance.restore.end
-instance.restore.start
-instance.resume.end
-instance.resume.start
-instance.shelve.end
-instance.shelve_offload.end
-instance.shelve_offload.start
-instance.shelve.start
-instance.shutdown.end
-instance.shutdown.start
-instance.snapshot.end
-instance.snapshot.start
-instance.soft_delete.end
-instance.soft_delete.start
-instance.suspend.end
-instance.suspend.start
-instance.trigger_crash_dump.end
-instance.trigger_crash_dump.start
-instance.unpause.end
-instance.unpause.start
-instance.unrescue.end
-instance.unrescue.start
-instance.unshelve.start
-instance.unshelve.end
-instance.update
-instance.volume.attach
-instance.volume.detach
-libvirt.error
-compute_task.build_instances
-compute_task.migrate_server
-compute_task.rebuild_server
-HostAPI.power_action.end
-HostAPI.power_action.start
-HostAPI.set_enabled.end
-HostAPI.set_enabled.start
-HostAPI.set_maintenance.end
-HostAPI.set_maintenance.start
-keypair.create.start
-keypair.create.end
-keypair.delete.start
-keypair.delete.end
-keypair.import.start
-keypair.import.end
-network.floating_ip.allocate
-network.floating_ip.associate
-network.floating_ip.deallocate
-network.floating_ip.disassociate
-scheduler.select_destinations.end
-scheduler.select_destinations.start
-servergroup.addmember
-servergroup.create
-servergroup.delete
-volume.usage
-compute.exception
+aggregate.addhost.end specific-payload
+aggregate.addhost.start specific-payload
+aggregate.create.end specific-payload
+aggregate.create.start specific-payload
+aggregate.delete.end specific-payload
+aggregate.delete.start specific-payload
+aggregate.removehost.end specific-payload
+aggregate.removehost.start specific-payload
+aggregate.updatemetadata.end specific-payload
+aggregate.updatemetadata.start specific-payload
+aggregate.updateprop.end specific-payload
+aggregate.updateprop.start specific-payload
+api.fault specific-payload
+instance.create.end instance-payload
+instance.create.error instance-payload
+instance.add_fixed_ip.end instance-payload
+instance.add_fixed_ip.start instance-payload
+instance.create.start instance-payload
+instance.delete.end instance-payload
+instance.remove_fixed_ip.end instance-payload
+instance.remove_fixed_ip.start instance-payload
+instance.delete.start instance-payload
+instance.evacuate instance-payload
+instance.exists extended-instance-payload
+instance.finish_resize.end instance-payload
+instance.finish_resize.start instance-payload
+instance.live.migration_abort.start instance-payload
+instance.live.migration_abort.end instance-payload
+instance.live_migration_post_dest.end instance-payload
+instance.live_migration_post_dest.start instance-payload
+instance.live_migration_post.end instance-payload
+instance.live_migration_post.start instance-payload
+instance.live_migration_pre.end instance-payload
+instance.live_migration_pre.start instance-payload
+instance.live_migration_rollback_dest.end instance-payload
+instance.live_migration_rollback_dest.start instance-payload
+instance.live_migration_rollback.end instance-payload
+instance.live_migration_rollback.start instance-payload
+instance.pause.end instance-payload
+instance.pause.start instance-payload
+instance.power_off.end instance-payload
+instance.power_off.start instance-payload
+instance.power_on.end instance-payload
+instance.power_on.start instance-payload
+instance.reboot.end instance-payload
+instance.reboot.start instance-payload
+instance.rebuild.end instance-payload
+instance.rebuild.error instance-payload
+instance.rebuild.scheduled instance-payload
+instance.rebuild.start instance-payload
+instance.rescue.end extended-instance-payload
+instance.rescue.start extended-instance-payload
+instance.resize_confirm.end instance-payload
+instance.resize_confirm.start instance-payload
+instance.resize.end instance-payload
+instance.resize.error instance-payload
+instance.resize_prep.end instance-payload
+instance.resize_prep.start instance-payload
+instance.resize_revert.end instance-payload
+instance.resize_revert.start instance-payload
+instance.resize.start instance-payload
+instance.restore.end instance-payload
+instance.restore.start instance-payload
+instance.resume.end instance-payload
+instance.resume.start instance-payload
+instance.shelve.end instance-payload
+instance.shelve_offload.end instance-payload
+instance.shelve_offload.start instance-payload
+instance.shelve.start instance-payload
+instance.shutdown.end instance-payload
+instance.shutdown.start instance-payload
+instance.snapshot.end instance-payload
+instance.snapshot.start instance-payload
+instance.soft_delete.end instance-payload
+instance.soft_delete.start instance-payload
+instance.suspend.end instance-payload
+instance.suspend.start instance-payload
+instance.trigger_crash_dump.end instance-payload
+instance.trigger_crash_dump.start instance-payload
+instance.unpause.end instance-payload
+instance.unpause.start instance-payload
+instance.unrescue.end instance-payload
+instance.unrescue.start instance-payload
+instance.unshelve.start instance-payload
+instance.unshelve.end instance-payload
+instance.update extended-instance-payload
+instance.volume.attach extended-instance-payload
+instance.volume.detach extended-instance-payload
+libvirt.error specific-payload
+compute_task.build_instances specific-payload
+compute_task.migrate_server specific-payload
+compute_task.rebuild_server specific-payload
+HostAPI.power_action.end specific-payload
+HostAPI.power_action.start specific-payload
+HostAPI.set_enabled.end specific-payload
+HostAPI.set_enabled.start specific-payload
+HostAPI.set_maintenance.end specific-payload
+HostAPI.set_maintenance.start specific-payload
+keypair.create.start specific-payload
+keypair.create.end specific-payload
+keypair.delete.start specific-payload
+keypair.delete.end specific-payload
+keypair.import.start specific-payload
+keypair.import.end specific-payload
+network.floating_ip.allocate specific-payload
+network.floating_ip.associate specific-payload
+network.floating_ip.deallocate specific-payload
+network.floating_ip.disassociate specific-payload
+scheduler.select_destinations.end specific-payload
+scheduler.select_destinations.start specific-payload
+servergroup.addmember specific-payload
+servergroup.create specific-payload
+servergroup.delete specific-payload
+volume.usage specific-payload
+compute.exception specific-payload

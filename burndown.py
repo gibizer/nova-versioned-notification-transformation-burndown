@@ -32,20 +32,23 @@ def parse_args():
 
 def load_to_do_list():
     with open(TODO_LIST) as todo:
-        return [line.strip() for line in todo]
+        return [line.strip().split() for line in todo]
 
 
-def todo_to_notification_sample(event_types):
+def todo_to_notification_sample(todos):
     samples = []
-    for event_type in event_types:
-        samples.append('-'.join(event_type.replace('.', '-').split('-')[0:2]))
+    for todo in todos:
+        event_type = todo[0]
+        category = todo[1]
+        samples.append(('-'.join(event_type.replace('.', '-').split('-')[0:2]),
+                        category))
     return samples
 
 
 def fetch_gerrit_data(sample_file_names):
     file_query = ""
     for sample in sample_file_names:
-        file_query += "file:^.*%s.*+OR+" % sample
+        file_query += "file:^.*%s.*+OR+" % sample[0]
     file_query = file_query[0:-4]  # remove the last OR
 
     query = QUERY + "+(%s)" % file_query
@@ -64,7 +67,9 @@ def fetch_gerrit_data(sample_file_names):
 def match_reviews_for_samples(reviews, samples):
     result = {}
     for sample in samples:
-        result[sample] = get_review_adding_sample(sample, reviews)
+        result[sample[0]] = {
+            'review': get_review_adding_sample(sample[0], reviews),
+            'category': sample[1]}
 
     return result
 
@@ -106,11 +111,11 @@ def get_hourly_burndown_data(reviews, start):
 
 def get_burndown_data(reviews, until):
     to_be_transformed = 0
-    for sample, review in sorted(reviews.items()):
-        if (not review or
-            review['status'] != 'MERGED' or
-            (review['status'] == 'MERGED' and
-             datetime.strptime(review['submitted'],
+    for sample, data in sorted(reviews.items()):
+        if (not data['review'] or
+            data['review']['status'] != 'MERGED' or
+            (data['review']['status'] == 'MERGED' and
+             datetime.strptime(data['review']['submitted'],
                                '%Y-%m-%d %H:%M:%S.%f000') > until)):
             to_be_transformed += 1
     return to_be_transformed
@@ -118,24 +123,26 @@ def get_burndown_data(reviews, until):
 
 def write_todo_list_to_json(reviews):
     result = []
-    for sample, review in sorted(reviews.items()):
-        if review:
-            status = review['status']
+    for sample, data in sorted(reviews.items()):
+        if data['review']:
+            status = data['review']['status']
             if status == 'NEW':
                 status = 'IN PROGRESS'
 
             result.append({
                 'event_type': sample,
                 'status': status,
-                'review': review['_number'],
-                'owner': review['owner']['username']
+                'review': data['review']['_number'],
+                'owner': data['review']['owner']['username'],
+                'category': data['category'],
             })
         else:
             result.append({
                 'event_type': sample,
                 'status': 'TODO',
                 'review': '',
-                'owner': ''
+                'owner': '',
+                'category': data['category'],
             })
     with open(TODO_LIST_JSON_FILE, 'w') as jf:
         json.dump(result, jf)
