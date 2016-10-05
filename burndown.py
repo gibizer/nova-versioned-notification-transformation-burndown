@@ -3,6 +3,7 @@ import calendar
 from datetime import datetime, timedelta
 import logging
 import json
+import re
 
 import requests
 
@@ -37,8 +38,7 @@ def load_to_do_list():
 def todo_to_notification_sample(event_types):
     samples = []
     for event_type in event_types:
-        samples.append('-'.join(event_type.replace('.', '-').split('-')[0:2]) +
-                       '-')  # add a last hyphen to avoid false matches
+        samples.append('-'.join(event_type.replace('.', '-').split('-')[0:2]))
     return samples
 
 
@@ -79,7 +79,8 @@ def get_review_adding_sample(sample, reviews):
 
 def is_add_sample_file(sample, change_list):
     for path, change in change_list.items():
-        if ('doc/notification_samples' in path and sample in path and
+        if ('doc/notification_samples' in path and
+                re.match('.*%s[^_]+' % sample, path) and
                 'status' in change and change['status'] == 'A'):
             return True
     return False
@@ -120,14 +121,14 @@ def write_todo_list_to_json(reviews):
     for sample, review in sorted(reviews.items()):
         if review:
             result.append({
-                'event_type': sample[:-1],
+                'event_type': sample,
                 'status': review['status'],
                 'review': review['_number'],
                 'owner': review['owner']['username']
             })
         else:
             result.append({
-                'event_type': sample[:-1],
+                'event_type': sample,
                 'status': 'TODO',
                 'review': '',
                 'owner': ''
