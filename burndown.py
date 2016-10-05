@@ -120,9 +120,13 @@ def write_todo_list_to_json(reviews):
     result = []
     for sample, review in sorted(reviews.items()):
         if review:
+            status = review['status']
+            if status == 'NEW':
+                status = 'IN PROGRESS'
+
             result.append({
                 'event_type': sample,
-                'status': review['status'],
+                'status': status,
                 'review': review['_number'],
                 'owner': review['owner']['username']
             })
