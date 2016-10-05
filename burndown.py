@@ -80,7 +80,7 @@ def get_review_adding_sample(sample, reviews):
 def is_add_sample_file(sample, change_list):
     for path, change in change_list.items():
         if ('doc/notification_samples' in path and sample in path and
-                change['status'] == 'A'):
+                'status' in change and change['status'] == 'A'):
             return True
     return False
 
