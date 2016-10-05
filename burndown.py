@@ -123,7 +123,9 @@ def get_burndown_data(reviews, until):
 
 def write_todo_list_to_json(reviews):
     result = []
-    for sample, data in sorted(reviews.items()):
+    for sample, data in sorted(reviews.items(),
+                               key=lambda item: (item[1]['category'],
+                                                 item[0])):
         if data['review']:
             status = data['review']['status']
             if status == 'NEW':
@@ -144,6 +146,7 @@ def write_todo_list_to_json(reviews):
                 'owner': '',
                 'category': data['category'],
             })
+
     with open(TODO_LIST_JSON_FILE, 'w') as jf:
         json.dump(result, jf)
 
