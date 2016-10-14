@@ -24,8 +24,8 @@ instance.evacuate instance-payload
 instance.exists extended-instance-payload
 instance.finish_resize.end instance-payload
 instance.finish_resize.start instance-payload
-instance.live.migration_abort.start instance-payload
-instance.live.migration_abort.end instance-payload
+instance.live_migration_abort.start instance-payload
+instance.live_migration_abort.end instance-payload
 instance.live_migration_post_dest.end instance-payload
 instance.live_migration_post_dest.start instance-payload
 instance.live_migration_post.end instance-payload
@@ -84,8 +84,8 @@ instance.unrescue.start instance-payload
 instance.unshelve.start instance-payload
 instance.unshelve.end instance-payload
 instance.update extended-instance-payload
-instance.volume.attach extended-instance-payload
-instance.volume.detach extended-instance-payload
+instance.volume_attach extended-instance-payload
+instance.volume_detach extended-instance-payload
 libvirt.error specific-payload
 compute_task.build_instances specific-payload
 compute_task.migrate_server specific-payload
