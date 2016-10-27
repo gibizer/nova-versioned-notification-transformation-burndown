@@ -22,8 +22,8 @@ instance.remove_fixed_ip.start instance-payload
 instance.delete.start instance-payload
 instance.evacuate instance-payload
 instance.exists extended-instance-payload
-instance.finish_resize.end instance-payload
-instance.finish_resize.start instance-payload
+instance.resize_finish.end instance-payload
+instance.resize_finish.start instance-payload
 instance.live_migration_abort.start instance-payload
 instance.live_migration_abort.end instance-payload
 instance.live_migration_post_dest.end instance-payload
@@ -113,3 +113,4 @@ servergroup.create specific-payload
 servergroup.delete specific-payload
 volume.usage specific-payload
 compute.exception specific-payload
+metrics.update specific-payload
