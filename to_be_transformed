@@ -1,11 +1,11 @@
-aggregate.addhost.end specific-payload
-aggregate.addhost.start specific-payload
+aggregate.add_host.end specific-payload
+aggregate.add_host.start specific-payload
 aggregate.create.end specific-payload
 aggregate.create.start specific-payload
 aggregate.delete.end specific-payload
 aggregate.delete.start specific-payload
-aggregate.removehost.end specific-payload
-aggregate.removehost.start specific-payload
+aggregate.remove_host.end specific-payload
+aggregate.remove_host.start specific-payload
 aggregate.updatemetadata.end specific-payload
 aggregate.updatemetadata.start specific-payload
 aggregate.updateprop.end specific-payload
