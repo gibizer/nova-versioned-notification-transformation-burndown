@@ -131,6 +131,10 @@ def write_todo_list_to_json(reviews):
             if status == 'NEW':
                 status = 'IN PROGRESS'
 
+            if status == 'ABANDONED':
+                status = 'TODO (ABANDONED)'
+                data['review']['owner']['username'] = ''
+
             result.append({
                 'event_type': sample,
                 'status': status,
