@@ -40,7 +40,7 @@ def todo_to_notification_sample(todos):
     for todo in todos:
         event_type = todo[0]
         category = todo[1]
-        samples.append(('-'.join(event_type.replace('.', '-').split('-')[0:2]),
+        samples.append(('-'.join(event_type.replace('.', '-').split('-')),
                         category))
     return samples
 
