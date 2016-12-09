@@ -26,6 +26,8 @@ instance.resize_finish.end instance-payload
 instance.resize_finish.start instance-payload
 instance.live_migration_abort.start instance-payload
 instance.live_migration_abort.end instance-payload
+instance.live_migration_force_complete.start intance-payload
+instance.live_migration_force_complete.end intance-payload
 instance.live_migration_post_dest.end instance-payload
 instance.live_migration_post_dest.start instance-payload
 instance.live_migration_post.end instance-payload
