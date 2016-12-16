@@ -44,6 +44,7 @@ instance.power_off.end instance-payload
 instance.power_off.start instance-payload
 instance.power_on.end instance-payload
 instance.power_on.start instance-payload
+instance.reboot.error instance-payload
 instance.reboot.end instance-payload
 instance.reboot.start instance-payload
 instance.rebuild.end instance-payload
