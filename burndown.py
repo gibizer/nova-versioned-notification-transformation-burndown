@@ -10,7 +10,7 @@ import requests
 
 PROJECT_SITE = "https://review.openstack.org/changes/"
 QUERY = "q=project:openstack/nova"
-ATTRS = ("&o=CURRENT_REVISION&o=ALL_COMMITS&o=ALL_FILES&o=LABELS"
+ATTRS = ("&o=ALL_REVISIONS&o=ALL_COMMITS&o=ALL_FILES&o=LABELS"
          "&o=DETAILED_LABELS&o=DETAILED_ACCOUNTS")
 
 TODO_LIST = 'to_be_transformed'
@@ -77,8 +77,10 @@ def match_reviews_for_samples(reviews, samples):
 def get_review_adding_sample(sample, reviews):
     for review in reviews:
         revs = review['revisions']
-        if is_add_sample_file(sample, revs[revs.keys()[0]]['files']):
-            return review
+        # any revision counts
+        for rev in revs.values():
+            if is_add_sample_file(sample, rev['files']):
+                return review
     return None
 
 
@@ -93,24 +95,28 @@ def is_add_sample_file(sample, change_list):
 
 def write_burndown_to_csv(reviews):
     with open(BURNDOWN_DATA_CSV, 'w') as csv_file:
-        csv_file.write('date, to_be_transformed\n')
+        csv_file.write('date, open_reviews, to_be_transformed\n')
         hourly_data = get_hourly_burndown_data(reviews, datetime(2016, 6, 1))
-        for date, todo in hourly_data:
+        for date, todo, has_review in hourly_data:
             timestamp = calendar.timegm(date.timetuple())
-            csv_file.write('%d, %d\n' % (timestamp, todo))
+            # the chart is cumulative so we have to subtract
+            csv_file.write('%d, %d, %d\n' %
+                           (timestamp, has_review, todo - has_review))
 
 
 def get_hourly_burndown_data(reviews, start):
     hourly_data = []
     time = start
     while time < datetime.now():
-        hourly_data.append((time, get_burndown_data(reviews, time)))
+        todo, has_review = get_burndown_data(reviews, time)
+        hourly_data.append((time, todo, has_review))
         time += timedelta(hours=1)
     return hourly_data
 
 
 def get_burndown_data(reviews, until):
     to_be_transformed = 0
+    has_open_review = 0
     for sample, data in sorted(reviews.items()):
         if (not data['review'] or
             data['review']['status'] != 'MERGED' or
@@ -118,7 +124,20 @@ def get_burndown_data(reviews, until):
              datetime.strptime(data['review']['submitted'],
                                '%Y-%m-%d %H:%M:%S.%f000') > until)):
             to_be_transformed += 1
-    return to_be_transformed
+            # so it is still need to be transformed but do we have already
+            # an open review for it
+            if data['review']:
+                # sort the revisions by _number and check the published dates
+                # to see if there was revision published until the current date
+                revs = sorted(data['review']['revisions'].values(),
+                              key=lambda r: r['_number'])
+                for rev in revs:
+                    if datetime.strptime(rev['created'],
+                                         '%Y-%m-%d %H:%M:%S.%f000') <= until:
+                        has_open_review += 1
+                        break
+
+    return to_be_transformed, has_open_review
 
 
 def write_todo_list_to_json(reviews):
