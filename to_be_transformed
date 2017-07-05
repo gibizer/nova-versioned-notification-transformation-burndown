@@ -6,10 +6,10 @@ aggregate.delete.end specific-payload
 aggregate.delete.start specific-payload
 aggregate.remove_host.end specific-payload
 aggregate.remove_host.start specific-payload
-aggregate.updatemetadata.end specific-payload
-aggregate.updatemetadata.start specific-payload
-aggregate.updateprop.end specific-payload
-aggregate.updateprop.start specific-payload
+aggregate.update_metadata.end specific-payload
+aggregate.update_metadata.start specific-payload
+aggregate.update_prop.end specific-payload
+aggregate.update_prop.start specific-payload
 api.fault specific-payload
 instance.create.end instance-payload
 instance.create.error instance-payload
@@ -49,7 +49,7 @@ instance.reboot.end instance-payload
 instance.reboot.start instance-payload
 instance.rebuild.end instance-payload
 instance.rebuild.error instance-payload
-instance.rebuild.scheduled instance-payload
+instance.rebuild_scheduled instance-payload
 instance.rebuild.start instance-payload
 instance.rescue.end extended-instance-payload
 instance.rescue.start extended-instance-payload
@@ -111,9 +111,9 @@ network.floating_ip.deallocate specific-payload
 network.floating_ip.disassociate specific-payload
 scheduler.select_destinations.end specific-payload
 scheduler.select_destinations.start specific-payload
-servergroup.addmember specific-payload
-servergroup.create specific-payload
-servergroup.delete specific-payload
+server_group.add_member specific-payload
+server_group.create specific-payload
+server_group.delete specific-payload
 volume.usage specific-payload
 compute.exception specific-payload
 metrics.update specific-payload
