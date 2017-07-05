@@ -111,7 +111,7 @@ network.floating_ip.deallocate specific-payload
 network.floating_ip.disassociate specific-payload
 scheduler.select_destinations.end specific-payload
 scheduler.select_destinations.start specific-payload
-server_group.addmember specific-payload
+server_group.add_member specific-payload
 server_group.create specific-payload
 server_group.delete specific-payload
 volume.usage specific-payload
