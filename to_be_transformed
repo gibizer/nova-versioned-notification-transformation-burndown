@@ -13,12 +13,8 @@ aggregate.update_prop.start specific-payload
 api.fault specific-payload
 instance.create.end instance-payload
 instance.create.error instance-payload
-instance.add_fixed_ip.end instance-payload
-instance.add_fixed_ip.start instance-payload
 instance.create.start instance-payload
 instance.delete.end instance-payload
-instance.remove_fixed_ip.end instance-payload
-instance.remove_fixed_ip.start instance-payload
 instance.delete.start instance-payload
 instance.evacuate instance-payload
 instance.exists extended-instance-payload
@@ -105,10 +101,6 @@ keypair.delete.start specific-payload
 keypair.delete.end specific-payload
 keypair.import.start specific-payload
 keypair.import.end specific-payload
-network.floating_ip.allocate specific-payload
-network.floating_ip.associate specific-payload
-network.floating_ip.deallocate specific-payload
-network.floating_ip.disassociate specific-payload
 scheduler.select_destinations.end specific-payload
 scheduler.select_destinations.start specific-payload
 server_group.add_member specific-payload
