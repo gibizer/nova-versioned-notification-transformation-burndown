@@ -18,6 +18,10 @@ instance.delete.end instance-payload
 instance.delete.start instance-payload
 instance.evacuate instance-payload
 instance.exists extended-instance-payload
+instance.interface_attach.start instance-payload
+instance.interface_attach.end instance-payload
+instance.interface_detach.start instance-payload
+instance.interface_detach.end instance-payload
 instance.resize_finish.end instance-payload
 instance.resize_finish.start instance-payload
 instance.live_migration_abort.start instance-payload
