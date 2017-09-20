@@ -93,12 +93,6 @@ libvirt.error specific-payload
 compute_task.build_instances specific-payload
 compute_task.migrate_server specific-payload
 compute_task.rebuild_server specific-payload
-HostAPI.power_action.end specific-payload
-HostAPI.power_action.start specific-payload
-HostAPI.set_enabled.end specific-payload
-HostAPI.set_enabled.start specific-payload
-HostAPI.set_maintenance.end specific-payload
-HostAPI.set_maintenance.start specific-payload
 keypair.create.start specific-payload
 keypair.create.end specific-payload
 keypair.delete.start specific-payload
