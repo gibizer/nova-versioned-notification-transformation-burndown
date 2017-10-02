@@ -10,7 +10,6 @@ aggregate.update_metadata.end specific-payload
 aggregate.update_metadata.start specific-payload
 aggregate.update_prop.end specific-payload
 aggregate.update_prop.start specific-payload
-api.fault specific-payload
 instance.create.end instance-payload
 instance.create.error instance-payload
 instance.create.start instance-payload
