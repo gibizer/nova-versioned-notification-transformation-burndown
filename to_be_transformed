@@ -88,7 +88,7 @@ instance.unshelve.end instance-payload
 instance.update extended-instance-payload
 instance.volume_attach extended-instance-payload
 instance.volume_detach extended-instance-payload
-libvirt.error specific-payload
+libvirt.connect.error specific-payload
 compute_task.build_instances specific-payload
 compute_task.migrate_server specific-payload
 compute_task.rebuild_server specific-payload
